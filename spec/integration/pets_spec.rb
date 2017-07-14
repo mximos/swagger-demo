@@ -3,7 +3,7 @@ require 'swagger_helper'
 
 describe 'Pets API' do
 
-  path '/pets' do
+  path '/api/v1/pets' do
 
     post 'Creates a pet' do
       tags 'Pets'
@@ -24,13 +24,13 @@ describe 'Pets API' do
       end
 
       response '422', 'invalid request' do
-        let(:blog) { { name: 'foo' } }
+        let(:pet) { { name: 'foo' } }
         run_test!
       end
     end
   end
 
-  path '/pets/{id}' do
+  path '/api/v1/pets/{id}' do
 
     get 'Retrieves a pet' do
       tags 'Pets'
@@ -51,7 +51,7 @@ describe 'Pets API' do
         run_test!
       end
 
-      response '404', 'blog not found' do
+      response '404', 'pet not found' do
         let(:id) { 'invalid' }
         run_test!
       end
