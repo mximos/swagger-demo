@@ -12,4 +12,4 @@ Start Rails server:
 
 * rails s
 
-Go to localhost:3000/api-docs to view swagger-ui
+Go to http://localhost:3000/api-docs to view swagger-ui
