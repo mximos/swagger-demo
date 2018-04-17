@@ -40,14 +40,14 @@ describe 'Pets API' do
       response '200', 'name found' do
         schema type: :object,
           properties: {
-            id: { type: :integer },
+            id: { type: :integer, },
             name: { type: :string },
             photo_url: { type: :string },
             status: { type: :string }
           },
           required: [ 'id', 'name', 'status' ]
 
-        let(:id) { Pet.create(name: 'foo', status: 'bar').id }
+        let(:id) { Pet.create(name: 'foo', status: 'bar', photo_url: 'http://example.com/avatar.jpg').id }
         run_test!
       end
 

@@ -12,7 +12,11 @@ module Api
 
       # GET /api/v1/pets/1
       def show
-        render json: @pet.to_json(only: [:id, :name, :status, :photo_url])
+        if @pet
+          render json: @pet.to_json(only: [:id, :name, :status, :photo_url])
+        else
+          render json: {}, status: :not_found
+        end
       end
 
       # POST /api/v1/pets
@@ -44,6 +48,7 @@ module Api
         # Use callbacks to share common setup or constraints between actions.
         def set_pet
           @pet = Pet.find(params[:id])
+        rescue ActiveRecord::RecordNotFound
         end
 
         # Only allow a trusted parameter "white list" through.
@@ -51,6 +56,6 @@ module Api
           params.fetch(:pet).permit(:name, :status, :photo_url)
           # .permit(:name, :status, :photo_url)
         end
+      end
     end
   end
-end
