@@ -4,6 +4,8 @@ Swagger integration with Rails application using rswag gem
 
 Setup:
 
+* bundle install
+
 * rake db:migrate
 
 * rake rswag:specs:swaggerize
